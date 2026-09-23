@@ -6,7 +6,7 @@
     "type": "offline"
   },
   "server": {
-    "ip": "brill.aternos.host",
+    "ip": "bigeye.aternos.host",
     "port": 55971,
     "version": "1.21.1"
   },
