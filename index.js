@@ -46,7 +46,7 @@ function createBot() {
     version: config.server.version
   });
 
-  bot.loadPlugin(pathfinder);
+bot.loadPlugin(pathfinder);
 
   // Connection success
   bot.on('spawn', () => {
