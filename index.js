@@ -778,35 +778,39 @@ function chatModule(bot) {
 }
 
 // ============================================================
-// CONSOLE COMMANDS
+// CONSOLE COMMANDS (FIXED FOR HOSTINGER / CLOUD)
 // ============================================================
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
-});
+if (process.stdin.isTTY) {
+  const readline = require('readline');
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+  });
 
-rl.on('line', (line) => {
-  if (!bot || !botState.connected) {
-    console.log('[Console] Bot not connected');
-    return;
-  }
+  rl.on('line', (line) => {
+    if (!bot || !botState.connected) {
+      console.log('[Console] Bot not connected');
+      return;
+    }
 
-  const trimmed = line.trim();
-  if (trimmed.startsWith('say ')) {
-    bot.chat(trimmed.slice(4));
-  } else if (trimmed.startsWith('cmd ')) {
-    bot.chat('/' + trimmed.slice(4));
-  } else if (trimmed === 'status') {
-    console.log(`Connected: ${botState.connected}, Uptime: ${formatUptime(Math.floor((Date.now() - botState.startTime) / 1000))}`);
-  } else if (trimmed === 'reconnect') {
-    console.log('[Console] Manual reconnect requested');
-    bot.end();
-  } else {
-    bot.chat(trimmed);
-  }
-});
+    const trimmed = line.trim();
+    if (trimmed.startsWith('say ')) {
+      bot.chat(trimmed.slice(4));
+    } else if (trimmed.startsWith('cmd ')) {
+      bot.chat('/' + trimmed.slice(4));
+    } else if (trimmed === 'status') {
+      console.log(`Connected: ${botState.connected}, Uptime: ${formatUptime(Math.floor((Date.now() - botState.startTime) / 1000))}`);
+    } else if (trimmed === 'reconnect') {
+      console.log('[Console] Manual reconnect requested');
+      bot.end();
+    } else {
+      bot.chat(trimmed);
+    }
+  });
+} else {
+  console.log('[Console] Non-interactive environment detected. Skipping stdin readline listener.');
+}
 
 // ============================================================
 // DISCORD WEBHOOK INTEGRATION
