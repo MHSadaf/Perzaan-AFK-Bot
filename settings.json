@@ -1,12 +1,12 @@
 {
   "name": "AFK Bot",
   "bot-account": {
-    "username": "Korols Daroan",
+    "username": "Korols_Daroan",
     "password": "",
     "type": "offline"
   },
   "server": {
-    "ip": "M_H_SADAF-Zxpn.aternos.me",
+    "ip": "brill.aternos.host",
     "port": 55971,
     "version": "1.21.1"
   },
