@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer');
-const { pathfinder, movements, goals } = require('mineflayer-pathfinder');
-const Movements = movements.Pathfinder;
-const GoalBlock = goals.GoalBlock;
+const pathfinder = require('mineflayer-pathfinder').pathfinder;
+const Movements = require('mineflayer-pathfinder').Movements;
+const { GoalBlock } = require('mineflayer-pathfinder').goals;
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
